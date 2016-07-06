@@ -16,5 +16,6 @@
 
 
 $(function(){
-  $(".track-buttons-container").append('<div class="share-button" onclick="share(40171, 1)"><span class="action-text">Download</span></div>');
+  $(".track-buttons-container").append('<div class="download-button" onclick="share(40171, 1)"><span class="action-text">Download</span></div>');
+  $("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href=' https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css ' type='text/css' media='screen'>");  
 });
