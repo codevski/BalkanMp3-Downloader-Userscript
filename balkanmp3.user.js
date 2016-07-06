@@ -17,10 +17,6 @@
 // ==/UserScript==
 
 
-//And of course your code!!
 $(function(){
-window.alert("Hello.. My Extension processed you..");
-
-$(".track-buttons-container").append('<div class="share-button" onclick="share(40171, 1)"><span class="action-text">Download</span></div>');
-
+  $(".track-buttons-container").append('<div class="share-button" onclick="share(40171, 1)"><span class="action-text">Download</span></div>');
 });
