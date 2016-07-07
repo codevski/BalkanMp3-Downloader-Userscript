@@ -10,12 +10,14 @@
 // @grant GM_xmlhttpRequest
 // @grant GM_getValue
 // @grant GM_setValue
+// @grant none
 // @version 0.0.2
 // @history 0.0.1 Cosmetic Only
 //
 // ==/UserScript==
 
 $(function(){
+    console.log('test');
     function injectScript(code) {
         var script=document.createElement('script');
         script.type='application/javascript';
@@ -25,13 +27,13 @@ $(function(){
     }
     
     function main() {
-        console.log("TestMessage");
+        //console.log("TestMessage");
         // Style Button
-        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.parentNode.parentNode.parentNode)""><span class="action-text">Download</span></div>');
+        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode)""><span class="action-text">Download</span></div>');
         //        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.id)""><span class="action-text">Download</span></div>');
         $("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href=' https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css ' type='text/css' media='screen'>");
         $(".download-button").css({"padding": "5px 8px 5px 26px", "overflow": "hidden"});
-        console.log($('.song-art').parent().attr('id'));
+        //console.log($('.song-art').parent().attr('id'));
     }
     
     injectScript(function findFile(fileID) {
@@ -39,18 +41,34 @@ $(function(){
         //find url with the div provided
         // Find first ancestor of el with tagName
         // or undefined if not found
-        console.log(fileID);
+        //console.log(fileID);
+        var a = $(this).closest('.data-track-name');
         var x = $('.song-art').parent().attr('id');
+        var z = $(x);
         var b = document.getElementById(x);
-        console.log(x);
-        while(fileID) {
-            fileID = fileIDdocument.getElementById(x).childNode;
-            if(fileID == document.getElementById(x)) {
-                console.log("Found It");
-                console.log(fileID);
-            }
+        var test = fileID.parentNode.parentNode.parentNode.parentNode;
+        console.log(z);
+        var els = [];
+        var el = fileID;
+        
+        while (fileID) {
+            els.unshift(fileID);
             console.log(fileID);
+            if(fileID == test) {
+                console.log("foundit");
+                fileID = fileID.childNodes;
+                console.log(fileID[3]);
+                fileID = fileID[3].childNodes;
+                console.log(fileID[3]);
+                for(namess in fileID[3]) {
+                    console.log(namess);
+                }
+                
+            }
+            
+            fileID = fileID.parentNode;
         }
+        
 
             // Many DOM methods return null if they don't 
             // find the element they are searching for
