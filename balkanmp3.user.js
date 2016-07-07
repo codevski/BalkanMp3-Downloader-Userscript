@@ -27,23 +27,29 @@ $(function(){
     function main() {
         console.log("TestMessage");
         // Style Button
-        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.id, "data-track-name")""><span class="action-text">Download</span></div>');
+        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.parentNode.parentNode.parentNode)""><span class="action-text">Download</span></div>');
+        //        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.id)""><span class="action-text">Download</span></div>');
         $("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href=' https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css ' type='text/css' media='screen'>");
         $(".download-button").css({"padding": "5px 8px 5px 26px", "overflow": "hidden"});
         console.log($('.song-art').parent().attr('id'));
     }
     
-    injectScript(function findFile(el, tagName) {
+    injectScript(function findFile(fileID) {
         //test
         //find url with the div provided
         // Find first ancestor of el with tagName
         // or undefined if not found
-        
-        while (el && el.parentNode) {
-            el = el.parentNode;
-            if (el.tagName && el.tagName.toLowerCase() == tagName) {
-                console.log(el);
+        console.log(fileID);
+        var x = $('.song-art').parent().attr('id');
+        var b = document.getElementById(x);
+        console.log(x);
+        while(fileID) {
+            fileID = fileIDdocument.getElementById(x).childNode;
+            if(fileID == document.getElementById(x)) {
+                console.log("Found It");
+                console.log(fileID);
             }
+            console.log(fileID);
         }
 
             // Many DOM methods return null if they don't 
