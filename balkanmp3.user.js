@@ -29,7 +29,7 @@ $(function(){
     function main() {
         //console.log("TestMessage");
         // Style Button
-        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode)""><span class="action-text">Download</span></div>');
+        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.parentNode.parentNode.parentNode.id)""><span class="action-text">Download</span></div>');
         //        $(".track-buttons-container").append('<div class="download-button" onClick="findFile(this.parentNode.parentNode.id)""><span class="action-text">Download</span></div>');
         $("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href=' https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css ' type='text/css' media='screen'>");
         $(".download-button").css({"padding": "5px 8px 5px 26px", "overflow": "hidden"});
@@ -44,30 +44,9 @@ $(function(){
         //console.log(fileID);
         var a = $(this).closest('.data-track-name');
         var x = $('.song-art').parent().attr('id');
-        var z = $(x);
-        var b = document.getElementById(x);
-        var test = fileID.parentNode.parentNode.parentNode.parentNode;
-        console.log(z);
-        var els = [];
-        var el = fileID;
-        
-        while (fileID) {
-            els.unshift(fileID);
-            console.log(fileID);
-            if(fileID == test) {
-                console.log("foundit");
-                fileID = fileID.childNodes;
-                console.log(fileID[3]);
-                fileID = fileID[3].childNodes;
-                console.log(fileID[3]);
-                for(namess in fileID[3]) {
-                    console.log(namess);
-                }
-                
-            }
-            
-            fileID = fileID.parentNode;
-        }
+        var test = document.getElementById(fileID);
+        test = test.childNodes
+        console.log(test);
         
 
             // Many DOM methods return null if they don't 
